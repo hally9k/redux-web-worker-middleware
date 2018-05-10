@@ -3,17 +3,14 @@ import './prime.scss'
 
 export default class Prime extends React.Component {
 	render() {
-		const { prime, requestPrime } = this.props
+		const { prime, start } = this.props
 		return (
-			<div>
-				{prime.map((x, index) => (
-					<span key={index}>
-						{index > 0 ? ', ' : ''}
-						{x}
-					</span>
-				))}
+			<div className="container">
+				{prime.get('number') || '?'}
+				<div>{prime.get('working') && <div className="lds-circle" />}</div>
+				<div>{prime.get('done') && 'DONE'}</div>
 				<div>
-					<button onClick={requestPrime}>Next</button>
+					<button onClick={start}>Start</button>
 				</div>
 			</div>
 		)

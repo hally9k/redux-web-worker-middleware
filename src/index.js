@@ -8,11 +8,11 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { List } from 'immutable'
 import { Provider } from 'react-redux'
 import logger from 'redux-logger'
-// import workerMiddleware from 'middleware/worker'
+import workerMiddleware from 'middleware/worker'
 
-const enhancer = composeWithDevTools(applyMiddleware(logger))
+const enhancer = composeWithDevTools(applyMiddleware(workerMiddleware, logger))
 
-const store = createStore(reducers, { prime: List([1, 3]) }, enhancer)
+const store = createStore(reducers, enhancer)
 
 ReactDOM.render(
 	<Provider store={store}>
