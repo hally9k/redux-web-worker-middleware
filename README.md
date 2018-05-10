@@ -1,0 +1,1 @@
+# redux-web-worker-middleware
