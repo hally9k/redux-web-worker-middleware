@@ -49,7 +49,8 @@
     "redux-devtools-extension": "^2.13.2",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.20.3",
-    "webpack": "^4.0.1",
-    "webpack-serve": "^0.1.5"
+    "webpack": "^4.8.1",
+    "webpack-serve": "^0.3.2",
+    "worker-loader": "^1.1.1"
   }
 }

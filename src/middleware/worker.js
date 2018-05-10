@@ -1,42 +1,18 @@
 import { receive, RECEIVE, START, done } from 'duck/prime'
+import Worker from './seive.worker.js'
 
-const eratosthenes = next => n => {
-	// Eratosthenes algorithm to find all primes under n
-	var array = [],
-		upperLimit = Math.sqrt(n),
-		output = []
+export default () => next => {
+	var myWorker = new Worker()
+	myWorker.onmessage = ({ data: action }) => next(action)
 
-	// Make an array from 2 to (n - 1)
-	for (var i = 0; i < n; i++) {
-		array.push(true)
-	}
-
-	// Remove multiples of primes starting from 2, 3, 5,...
-	for (var i = 2; i <= upperLimit; i++) {
-		if (array[i]) {
-			for (var j = i * i; j < n; j += i) {
-				array[j] = false
-			}
+	return action => {
+		const { type } = action
+		switch (type) {
+			case START:
+				myWorker.postMessage(action)
+				break
+			default:
+				next(action)
 		}
-	}
-
-	// All array[i] set to true are primes
-	for (var i = 2; i < n; i++) {
-		if (array[i]) {
-			next(receive(i))
-		}
-	}
-
-	return next(done())
-}
-
-export default () => next => action => {
-	const { type } = action
-	switch (type) {
-		case START:
-			eratosthenes(next)(100000)
-			break
-		default:
-			next(action)
 	}
 }

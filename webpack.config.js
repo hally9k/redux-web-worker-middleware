@@ -12,10 +12,16 @@ let config = {
 	entry: ['react-hot-loader/patch', path.resolve(__dirname, 'src/index.js')],
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'app.js'
+		filename: 'app.js',
+		globalObject: 'this'
 	},
 	module: {
 		rules: [
+			{
+				test: /\.worker\.js$/,
+				include: path.resolve(__dirname, 'src'),
+				loader: 'worker-loader'
+			},
 			{
 				test: /\.(js|jsx)$/,
 				include: path.resolve(__dirname, 'src'),
