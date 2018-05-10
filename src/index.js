@@ -9,6 +9,9 @@ import { List } from 'immutable'
 import { Provider } from 'react-redux'
 import logger from 'redux-logger'
 import workerMiddleware from 'middleware/worker'
+import { createEpicMiddleware } from 'redux-observable'
+
+const epicMiddleware = createEpicMiddleware(epics)
 
 const enhancer = composeWithDevTools(applyMiddleware(workerMiddleware, logger))
 

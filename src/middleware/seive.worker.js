@@ -1,3 +1,5 @@
+import { createEpicMiddleware } from 'redux-observable'
+
 const eratosthenes = n => {
 	// Eratosthenes algorithm to find all primes under n
 	var array = [],
