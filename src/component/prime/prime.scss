@@ -1,0 +1,86 @@
+:root {
+	--ux-color: #236aa4;
+	--ux-image-url: url("https://images.unsplash.com/photo-1490806230066-f7e6f7bf5052?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2ca889535ea01f912f94ac4ddf0034e0&auto=format&fit=crop&w=2233&q=80")
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.beaux {
+	font-size: 16rem;
+	font-weight: 900;
+	min-height: 19rem;
+	color: silver;
+}
+
+@media (max-width: 1000px) {
+	.beaux {
+		font-size: 12rem;
+		min-height: 14rem;
+	}
+}
+
+@media (max-width: 750px) {
+	.beaux {
+		font-size: 8rem;
+		min-height: 10rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.beaux {
+		font-size: 5rem;
+		min-height: 6rem;
+	}
+}
+
+.ux {
+    color: var(--ux-color);
+	-webkit-text-fill-color: transparent;
+	background: -webkit-linear-gradient(var(--ux-color), var(--ux-color)), var(--ux-image-url) repeat;
+	background: -o-linear-gradient(transparent, transparent);
+	-webkit-background-clip: text;
+	background-size: cover;
+}
+
+.cursor {
+	color: silver;
+	-webkit-text-fill-color: silver
+}
+
+.strap-line {
+	color: silver;
+	opacity: 0;
+	transition: opacity ease-in 1s;
+	font-weight: 200;
+	font-size: 2rem;
+}
+
+
+@media (max-width: 1000px) {
+	.strap-line{
+		font-size: 1.5rem;
+	}
+}
+
+@media (max-width: 750px) {
+	.strap-line{
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.strap-line{
+		font-size: 1rem;
+	}
+}
+
+
+.visible {
+	opacity: 1;
+	transition: opacity ease-in 1s;
+}
